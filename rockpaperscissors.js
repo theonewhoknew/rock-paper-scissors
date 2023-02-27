@@ -4,7 +4,6 @@ let choices = ["rock","paper", "scissors"]
 
 function getComputerChoice() {
     let number = Math.random();
-    console.log(number)
     if ( number < 0.33) {
         return "rock"
     }
@@ -16,16 +15,30 @@ function getComputerChoice() {
     }
 }
 
+
+
+let choice = prompt("Rock, Paper or Scissors?")
+
 function getUserChoice() {
-    let choice = prompt("Rock, Paper or Scissors?")
-    choice.toLowerCase();
-    if (choice === "rock" || choice === "paper" || choice === "scissors"){
-     return;
-        }
+    choice = choice.toLowerCase();
+    if (choice === "rock") {
+        return "rock"
+    }
+    else if (choice === "paper"){
+        return "paper"
+    }
+    else if (choice === "scissors"){
+        return "scissors"
+    }
+
         else {
             alert("answer not valid")
         }
     }
+    
+
+
+playRound(getUserChoice(),getComputerChoice())
 
 
 
@@ -63,3 +76,4 @@ function playRound(playerSelection, computerSelection){
         
     }
 }
+
