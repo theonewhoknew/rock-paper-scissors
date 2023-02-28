@@ -1,7 +1,5 @@
 console.log("Hello,World!")
 
-let choices = ["rock","paper", "scissors"]
-
 function getComputerChoice() {
     let number = Math.random();
     if ( number < 0.33) {
@@ -17,9 +15,10 @@ function getComputerChoice() {
 
 
 
-let choice = prompt("Rock, Paper or Scissors?")
+let choice 
 
 function getUserChoice() {
+    choice = prompt("Rock, Paper or Scissors?")
     choice = choice.toLowerCase();
     if (choice === "rock") {
         return "rock"
@@ -36,15 +35,7 @@ function getUserChoice() {
         }
     }
     
-
-
-playRound(getUserChoice(),getComputerChoice())
-
-
-
-
-
-function playRound(playerSelection, computerSelection){
+function game(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
         alert("Draw!")
     }
@@ -76,4 +67,8 @@ function playRound(playerSelection, computerSelection){
         
     }
 }
+for(let i = 0; i < 5; i++) {
+ game(getUserChoice(),getComputerChoice())
+}
+
 
