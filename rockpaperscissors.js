@@ -3,7 +3,6 @@ document.body.appendChild(container)
 const rockbutton = document.createElement("button")
 const paperbutton = document.createElement("button")
 const scissorsbutton = document.createElement("button")
-const buttons = document.querySelectorAll("button")
 
 container.appendChild(rockbutton)
 container.appendChild(paperbutton)
@@ -13,20 +12,7 @@ rockbutton.innerHTML = "ROCK"
 paperbutton.innerHTML = "PAPER"
 scissorsbutton.innerHTML = "SCISSORS"
 
-buttons.style.width = "200px";
-buttons.style.height = "200px";
 
-
-
-
-
-
-
- 
-
-
-
- 
 
 
 function getComputerChoice() {
@@ -42,14 +28,15 @@ function getComputerChoice() {
     }
 }
 let choice 
-function getUserChoice() {
-    if (choice === "rock") {
+
+function getUserChoice(playerSelection) {
+    if (playerSelection === "rock") {
         return "rock"
     }
-    else if (choice === "paper"){
+    else if (playerSelection === "paper"){
         return "paper"
     }
-    else if (choice === "scissors"){
+    else if (playerSelection === "scissors"){
         return "scissors"
     } 
  }
@@ -106,7 +93,9 @@ let cpuScore = 0
     }
     
      
-console.log(rockbutton.addEventListener("click", ))
+rockbutton.addEventListener("click", (console.log("Rock")))  ;
+
+
 
 
 
