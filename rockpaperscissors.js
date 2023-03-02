@@ -1,4 +1,33 @@
-console.log("Hello,World!")
+const container = document.createElement("div")
+document.body.appendChild(container)
+const rockbutton = document.createElement("button")
+const paperbutton = document.createElement("button")
+const scissorsbutton = document.createElement("button")
+const buttons = document.querySelectorAll("button")
+
+container.appendChild(rockbutton)
+container.appendChild(paperbutton)
+container.appendChild(scissorsbutton)
+
+rockbutton.innerHTML = "ROCK"
+paperbutton.innerHTML = "PAPER"
+scissorsbutton.innerHTML = "SCISSORS"
+
+buttons.style.width = "200px";
+buttons.style.height = "200px";
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
 
 function getComputerChoice() {
     let number = Math.random();
@@ -12,16 +41,8 @@ function getComputerChoice() {
         return "scissors"
     }
 }
-
-
-
 let choice 
-
 function getUserChoice() {
-    for (choice; choice != "rock" || choice != "paper" || choice != "scissors";) {
-    choice = prompt("Rock, Paper or Scissors?")
-    choice = choice.toLowerCase();
-
     if (choice === "rock") {
         return "rock"
     }
@@ -30,15 +51,10 @@ function getUserChoice() {
     }
     else if (choice === "scissors"){
         return "scissors"
-    }
-
-        else {
-            alert("answer not valid")
-        }
-    }
-    }
-    
-function game(playerSelection, computerSelection){
+    } 
+ }
+       
+function oneRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
         alert("Draw!")
     }
@@ -81,25 +97,16 @@ let result
 let userScore = 0
 let cpuScore = 0
 
-for(let i = 0; i < 5; i++) {
- game(getUserChoice(),getComputerChoice())
+ oneRound(getUserChoice(),getComputerChoice())
  if (result === "user-wins") {
-    console.log("User Score "+(++userScore))
+        ++userScore;
  }
- else if (result === "cpu-wins") {
-    console.log("CPU Score "+(++cpuScore))
- }
+ else {result === "cpu-wins";
+    ++cpuScore;
+    }
+    
+     
+console.log(rockbutton.addEventListener("click", ))
 
- else {}
-}
 
-if (userScore > cpuScore) {
-    console.log("You won the game!")
-}
-    else if (userScore === cpuScore) {
-    console.log ("There is no winner!")
-}
-    else {
-    console.log("You lost the game!")
-}
 
