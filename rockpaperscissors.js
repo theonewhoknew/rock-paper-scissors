@@ -12,35 +12,38 @@ rockbutton.innerHTML = "ROCK"
 paperbutton.innerHTML = "PAPER"
 scissorsbutton.innerHTML = "SCISSORS"
 
-
-
+let computerSelection 
+let playerSelection 
+let result
 
 function getComputerChoice() {
     let number = Math.random();
     if ( number < 0.33) {
-        return "rock"
+        computerSelection = "rock"
     }
     else if (number > 0.33 && number < 0.66) {
-        return "paper"
+        computerSelection = "paper"
     }
     else {
-        return "scissors"
+        computerSelection = "scissors"
     }
 }
-let choice 
 
-function getUserChoice(playerSelection) {
-    if (playerSelection === "rock") {
-        return "rock"
-    }
-    else if (playerSelection === "paper"){
-        return "paper"
-    }
-    else if (playerSelection === "scissors"){
-        return "scissors"
-    } 
- }
-       
+
+
+function getRock() {
+    playerSelection = "rock";
+    getComputerChoice();
+}
+function getPaper() {
+    playerSelection = "paper"
+    getComputerChoice();
+}
+function getScissors() {
+    playerSelection = "scissors"
+    getComputerChoice();
+}
+
 function oneRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
         alert("Draw!")
@@ -49,6 +52,7 @@ function oneRound(playerSelection, computerSelection){
         if (playerSelection === "rock" && computerSelection === "scissors") {
             alert("You win! Rock beats Scissors.")
             result = "user-wins"
+            
         }
 
         else if (playerSelection === "scissors" && computerSelection === "rock") {
@@ -80,22 +84,62 @@ function oneRound(playerSelection, computerSelection){
     }
 }
 
-let result
-let userScore = 0
-let cpuScore = 0
+rockbutton.addEventListener("click", () => {
+    getRock();
+    oneRound(playerSelection,computerSelection)
+    console.log(`User:${playerSelection}; CPU:${computerSelection}`)
+});
 
- oneRound(getUserChoice(),getComputerChoice())
- if (result === "user-wins") {
-        ++userScore;
- }
- else {result === "cpu-wins";
-    ++cpuScore;
+paperbutton.addEventListener("click", () => {
+    getPaper();
+    oneRound(playerSelection,computerSelection)
+    console.log(`User:${playerSelection}; CPU:${computerSelection}`)
+});
+
+scissorsbutton.addEventListener("click", () => {
+    getScissors();
+    oneRound(playerSelection,computerSelection)
+    console.log(`User:${playerSelection}; CPU:${computerSelection}`)
+});
+
+
+
+
+/* paperbutton.addEventListener("click", () => playerSelection = "paper");
+scissorsbutton.addEventListener("click", () => playerSelection = "scissors");
+
+rockbutton.addEventListener("click", oneRound(playerSelection,getComputerChoice()));
+paperbutton.addEventListener("click", oneRound(playerSelection,getComputerChoice()));
+scissorsbutton.addEventListener("click", oneRound(playerSelection,getComputerChoice())); */
+
+
+
+
+
+
+
+/*function getUserChoice(playerSelection) {
+    if (playerSelection === "rock") {
+        return "rock"
     }
-    
-     
-rockbutton.addEventListener("click", (console.log("Rock")))  ;
+    else if (playerSelection === "paper"){
+        return "paper"
+    }
+    else if (playerSelection === "scissors"){
+        return "scissors"
+    } 
+ } */
+       
 
 
 
+/* let userScore = 0
+let cpuScore = 0 */
 
-
+ /*oneRound(playerSelection,getComputerChoice())
+    if (result === "user-wins") {
+        console.log("you win")
+    }
+    else {result === "cpu-wins";
+        console.log("cpu wins")
+    }   */
