@@ -1,4 +1,5 @@
 const container = document.createElement("div")
+container.classList.add("container")
 document.body.appendChild(container)
 const rockbutton = document.createElement("button")
 const paperbutton = document.createElement("button")
@@ -12,9 +13,41 @@ rockbutton.innerHTML = "ROCK"
 paperbutton.innerHTML = "PAPER"
 scissorsbutton.innerHTML = "SCISSORS"
 
+const scorecontainer = document.createElement("div") 
+document.body.appendChild(scorecontainer)
+const userScore = document.createElement("div")
+scorecontainer.appendChild(userScore)
+const computerScore = document.createElement("div")
+scorecontainer.appendChild(computerScore)
+const rounds = document.createElement("div")
+scorecontainer.insertBefore(rounds, computerScore)
+scorecontainer.classList.add("scorecontainer")
+const resultcontainer = document.createElement("div")
+document.body.appendChild(resultcontainer)
+resultcontainer.classList.add("resultcontainer")
+
+
+
+
+
+
+function showResult (text) {
+    resultcontainer.innerHTML = text
+}
+
+let userScoreNum = 0
+let computerScoreNum = 0
+let roundsPlayed = 0
+
+computerScore.innerHTML = `CPU SCORE: ${computerScoreNum}`
+userScore.innerHTML = `USER SCORE: ${userScoreNum}`
+rounds.innerHTML = `ROUNDS PLAYED: ${roundsPlayed}`
+
+
 let computerSelection 
 let playerSelection 
 let result
+
 
 function getComputerChoice() {
     let number = Math.random();
@@ -45,42 +78,81 @@ function getScissors() {
 }
 
 function oneRound(playerSelection, computerSelection){
+  
     if (playerSelection === computerSelection){
-        alert("Draw!")
+        alert("Draw!");
+        roundsPlayed += 1;
+        rounds.innerHTML = `ROUNDS PLAYED: ${roundsPlayed}`;
     }
-    else {
-        if (playerSelection === "rock" && computerSelection === "scissors") {
-            alert("You win! Rock beats Scissors.")
-            result = "user-wins"
-            
+    
+        else {
+                
+            if (playerSelection === "rock" && computerSelection === "scissors") {
+                alert("You win! Rock beats Scissors.");
+                roundsPlayed += 1;
+                rounds.innerHTML = `ROUNDS PLAYED: ${roundsPlayed}`;
+                userScoreNum += 1;
+                userScore.innerHTML = `USER SCORE: ${userScoreNum}`;
+
+                    
+            }
+
+            else if (playerSelection === "scissors" && computerSelection === "rock") {
+                alert("You lose! Rock beats Scissors.");
+                roundsPlayed += 1;
+                rounds.innerHTML = `ROUNDS PLAYED: ${roundsPlayed}`;
+                computerScoreNum += 1;
+                computerScore.innerHTML = `CPU SCORE: ${computerScoreNum}`;
+                
+            }
+
+            else if (playerSelection === "paper" && computerSelection === "rock") {
+                alert("You win! Paper beats Rock.");
+                roundsPlayed += 1;
+                rounds.innerHTML = `ROUNDS PLAYED: ${roundsPlayed}`;
+                userScoreNum += 1;
+                userScore.innerHTML = `USER SCORE: ${userScoreNum}`;
+                    
+                    
+            }
+
+            else if (playerSelection === "rock" && computerSelection === "paper") {
+                alert("You lose! Paper beats Rock.");
+                roundsPlayed += 1;
+                rounds.innerHTML = `ROUNDS PLAYED: ${roundsPlayed}`;
+                computerScoreNum += 1;
+                computerScore.innerHTML = `CPU SCORE: ${computerScoreNum}`;
+            }
+
+            else if (playerSelection === "scissors" && computerSelection === "paper") {
+                alert("You win! Scissors beats paper.");
+                roundsPlayed += 1;
+                rounds.innerHTML = `ROUNDS PLAYED: ${roundsPlayed}`;
+                userScoreNum += 1;
+                userScore.innerHTML = `USER SCORE: ${userScoreNum}`;
+            }
+
+            else if (playerSelection === "paper" && computerSelection === "scissors") {
+                alert("You lose! Scissors beats paper.");
+                roundsPlayed += 1;
+                rounds.innerHTML = `ROUNDS PLAYED: ${roundsPlayed}`;
+                computerScoreNum += 1;
+                computerScore.innerHTML = `CPU SCORE: ${computerScoreNum}`;
+            }      
+        }
+    if (roundsPlayed === 5) {
+        if (userScoreNum > computerScoreNum) {
+            showResult("You win!")
         }
 
-        else if (playerSelection === "scissors" && computerSelection === "rock") {
-            alert("You lose! Rock beats Scissors.")
-            result = "cpu-wins"
+        else if (userScoreNum === computerScoreNum) {
+            showResult("It's a draw!")
         }
 
-        else if (playerSelection === "paper" && computerSelection === "rock") {
-            alert("You win! Paper beats Rock.")
-            result = "user-wins"
-        }
+        else {
+            showResult("You lose!")
+        } 
 
-        else if (playerSelection === "rock" && computerSelection === "paper") {
-            alert("You lose! Paper beats Rock.")
-            result = "cpu-wins"
-        }
-
-        else if (playerSelection === "scissors" && computerSelection === "paper") {
-            alert("You win! Scissors beats paper.")
-            result = "user-wins"
-        }
-
-        else if (playerSelection === "paper" && computerSelection === "scissors") {
-            alert("You lose! Scissors beats paper.")
-            result = "cpu-wins"
-        }
-
-        
     }
 }
 

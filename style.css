@@ -2,3 +2,17 @@ button {
     width: 200px;
     height: 100px;
 }
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.scorecontainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 80px;
+}
+
+.resultcontainer {
+    display: flex;
+    justify-content: space-between;
+}
